@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <!-- 1. 이벤트 리스너, v-on  -->
+    <!-- 
+        dice() 함수 로직
+        1. 주사위 수를 나타내는 값을 하나 정해야함
+        2. 주사위 던졌을때, 1~6 사이 랜덤 숫자 반환
+
+        1) 주사위 수를 나타내는 값을 하나 정해 data에 선언
+        2-1) methods 내에 1-6 사이 랜덤 숫자 반환하여 data에 선언해준 값을 바꿔주는 함수 생성
+        2-2) 주사위 던졌을 때 함수 실행 가능한 이벤트 리스너 v-on 사용 
+
+     -->
+    <div id="app">
+        <button @click="dice">1~6 랜덤 숫자 나오는 버튼</button>
+        <p>{{ number }}</p>
+        
+        <button @click="addCount(2)">2씩 증가하는 버튼</button>
+        <p>{{ count }}</p>
+        
+        <button @dblClick="doublleClick()">더블클릭 해보세요</button>
+
+        <div @mousemove="addCount(2)">마우스 올리면 카운트 데이터 2씩 증가</div>
+
+        <div>{{ count }}</div>
+        <div @mousemove="addCount(1)">
+            마우스를 올려봐!
+            <span @mousemove.stop>그만!</span>
+            여기부터 다시 시작
+        </div>
+
+        <input @keyup.enter="login" placeholder="아이디 입력하세요.">
+    </div>
+
+    <script>
+    new Vue({ 
+        el: "#app", 
+        data: {
+            number : 0,
+            count : 0
+        },
+        methods: {
+            dice(){
+               let N = Math.floor(Math.random()*(6)) + 1;
+               this.number = N;
+            },
+            addCount(number){
+                this.count = this.count + number
+            },
+            doublleClick(){
+                console.log("더블클릭")
+            },
+            login(){
+                alert('로그인 완료')
+            }
+        }
+    })
+    </script> 
+
+
+</body>
+</html>

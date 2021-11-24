@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <!-- 1. 함수 저장소 methods -->
+    <!-- <div id="app">
+        <p>{{ title }}</p>
+        <p>{{ howAreYou() }}</p>
+    </div>
+
+    <script>
+    new Vue({ 
+        el: "#app", 
+        data: {
+            title: "안녕 VueJS!"
+        },
+        methods: {
+        howAreYou() {
+            return "기분이 어때?"
+            }
+        }
+    })
+    </script> -->
+
+    <!-- 2. vue 내에서 vue를 지칭하는 단어, this -->
+    <div id="app">
+        <p>{{ sayHello() }}</p>
+        <p>{{ howAreYou() }}</p>
+    </div>
+
+    <script>
+     new Vue({ 
+        el: "#app", 
+        data: {
+            title: "안녕 VueJS!"
+        },
+        methods: {
+            howAreYou () {
+                return "기분이 어때?"
+            },
+            sayHello () {
+                return this.title // this.title은 vue에 정의된 title 이라는 값을 가져오라는 뜻
+            }
+        }
+    })
+    </script>
+</body>
+</html>
