@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watch : 감시자</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <!-- 1. computed는 이미 정의된 계산식에 따라 결과값을 반환할 때 사용되며, watch는 어떤 특정 조건에서 함수를 실행시키기 위한 트리거로서 사용할수 있음 
+    이해가 잘 안되는 내용임 -->
+    <div id="app">
+        <h1>{{ count }}</h1>
+        <!-- <p>{{ text }}</p> -->
+        <button @click="count --">count감소</button>
+
+
+        <!-- computed의 calculated안의 함수를 실행시키기 위해서는 calculated를 실제로 출력해야 합니다 -->
+        <!-- {{ calculated }} -->
+    </div>
+
+    <script>
+    // new Vue({ 
+    //     el: "#app", 
+    //     data: {
+    //         count: 3,
+    //         text : '변경 전입니다.'
+    //     },
+    //     watch: {
+    //         count(newVal){
+    //             this.text = oldVal + '에서' + newVal + '로 변경되었습니다.'
+    //         }
+    //     },
+    // })
+
+    new Vue({ 
+        el: "#app", 
+        data:{
+            count : 3,
+        },
+        computed: {
+            calculated() {
+                if(this.count === 2) {
+                  alert('값이 2가 되었습니다.')
+                }
+            }
+        },
+        watch:{
+            count(newVal){
+                if(newVal == 0){
+                    alert('값이 0이 되었습니다.')
+                    this.count = 3
+                }
+            }
+        }
+    }) 
+    </script> 
+
+
+
+</body>
+</html>
