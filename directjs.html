@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>템플릿에 직접 javascript 코드 넣기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <!-- 1. methods 객체를 이용하지 않고 직접 javascript 코드를 template 내에 입력  -->
+    <div id="app">
+
+        {{ count * 3 > 10 ? "10보다 큽니다." : "10보다 작거나 같습니다."}} <!-- 클릿 횟수 -->
+        <button @click="count ++">클릭</button>
+        <div>{{ count * 3 }}</div>
+
+    </div>
+
+    <script>
+    new Vue({ 
+        el: "#app", 
+        data: {
+            count: 0 // 클릭 횟수를 저장할 변수
+        }
+    })
+    </script> 
+
+
+
+</body>
+</html>

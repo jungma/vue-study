@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed Vs methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <!-- 1. VueJS의 computed VS methods 
+        : methods 내의 함수는 자신이 참고하는 데이터 뿐 아니라 상관없는 데이터가 변경될 떄도 다시 실행됨, 
+        computed는 자신과 관련 없다면 재실행 되지 않는다  -->
+    <div id="app">
+        <div> count : {{ count }}</div>
+        <div> second count : {{ secondCount }}</div>
+        <div> computed : {{ double }}</div>
+        <div> methods : {{ triple() }}</div>
+
+        <button @click="count ++">클릭</button>
+        <button @click="secondCount ++">클릭</button>
+    </div>
+
+    <script>
+    new Vue({ 
+        el: "#app", 
+        data: {
+            count: 0,
+            secondCount : 0
+        },
+        computed: {
+            double(){
+                console.log("computed doble")
+                return this.count * 2
+            }
+        },
+        methods: {
+            triple(){
+                console.log("methods triple")
+                return this.count * 3
+            }
+        }
+    })
+    </script> 
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if Vs v-show</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <!-- 1. 조건부 랜더링 v-if, v-else, v-show -->
+    <!-- v-if는 돔 자체가 랜더링 되지 않고, v-show 는 display:none처리 따라서 코드는 있지만 스타일로 display 처리를 하고 싶다면 v-show 사용 -->
+    <div id="app">
+        <div v-if="dog">강아지</div>
+        <div v-else>고양이</div>
+        <button @click="dog = !dog">반대교체</button>
+        <template v-if="dog">
+            강아지는 귀여워
+        </template>
+        <template v-else>
+            고양이도 귀엽지롱
+        </template>
+
+        <div v-show="dog">귀여운 댕댕</div>
+    </div>
+
+    <script>
+    new Vue({ 
+        el: "#app", 
+        data: {
+            dog : false
+        },
+        methods: {
+        }
+    })
+    </script> 
+
+
+
+</body>
+</html>

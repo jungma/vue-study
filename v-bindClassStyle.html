@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind:class / v-bind:style</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <div id="app">
+         <!-- 1. 클래스 바인딩  -->
+        <!-- click 시 attachRed true/false 변경 -->
+        <!-- :class로 object를 바인딩-->
+        <div 
+            class="demo"
+            @click="attachRed = !attachRed" 
+            :class="{red: attachRed, green: !attachRed}"
+        >1</div>
+        
+        <div 
+            class="demo"
+            :class="color"
+            :style="{height:myHeight}"
+        >2</div>
+        
+        <div 
+            class="demo"
+            :class="divClasses"
+        >3</div>
+        
+        
+        
+        <div>
+            2번 상자의 색: <input type="text" v-model="color">  
+        </div>
+
+    </div>
+
+    <script>
+        new Vue({
+        el: '#app',
+        data: {
+            attachRed: false,
+            color:'green'
+        },
+        computed: {
+            divClasses() {
+                return {
+                    red: this.attachRed,
+                    green: !this.attachRed
+                }
+            },
+            myHeight() {
+                return this.attachRed ? '50px' : '200px'
+            }
+        }
+
+        })
+    </script> 
+
+    <style>
+        .demo {
+        width: 100px;
+        height: 100px;
+        background-color:grey;
+        display:inline-block;
+        margin: 10px;
+        }
+
+        .red {
+        background-color: red;
+        }
+
+        .green {
+        background-color: green;
+        }
+
+        .blue {
+        background-color: blue;
+        }
+    </style>
+
+
+
+</body>
+</html>
